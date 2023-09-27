@@ -1,7 +1,7 @@
 // api.js
 export async function fetchProducts(limit, offset) {
     try {
-        const url = `http://localhost:8080/terangnesia/api/v1/products/?limit=${limit}&offset=${offset}`;
+        const url = `https://terangnesia-api-y2vek.ondigitalocean.app/terangnesia/api/v1/products/?limit=${limit}&offset=${offset}`;
         const headers = new Headers();
         headers.set('X-Api-Key', '12345678');
 
