@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import Badge from 'react-bootstrap/Badge';
+import {Carousel} from "react-bootstrap";
 
 const Landing = () => {
   return (
@@ -10,14 +12,17 @@ const Landing = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 text-md-start text-center py-6">
-              <h1 className="mb-4 fs-9 fw-bold">The Design Thinking Superpowers</h1>
-              <p className="mb-6 lead text-secondary">Tools tutorials, design and innovation experts, all<br className="d-none d-xl-block" />in one place! The most intuitive way to imagine<br className="d-none d-xl-block" />your next user experience.</p>
-              <div className="text-center text-md-start">
-                <a className="btn btn-warning me-3 btn-lg" href="" role="button">Get started</a>
-                <a className="btn btn-link text-warning fw-medium" href="" role="button" data-bs-toggle="modal" data-bs-target="#popupVideo">
-                  <span className="fas fa-play me-2"></span>Watch the video
-                </a>
-              </div>
+              <h1 className="mb-4 fs-9 fw-bold">Terangnesia</h1>
+              <p className="mb-6 lead text-secondary">Tempat kamu dapat menemukan produk - produk UMKM<br className="d-none d-xl-block" />dari seluruh indonesia<br className="d-none d-xl-block" /></p>
+               <div className="text-center text-md-start">
+                   <form className="mb-3">
+                       <input className="form-control" type="email" placeholder="Masukkan Nama Produk" aria-label="phone" />
+                       <br></br>
+                       <div className="text-center text-md-start">
+                           <a className="btn btn-warning me-3 btn-lg" href="" role="button">Cari</a>
+                       </div>
+                   </form>
+               </div>
             </div>
             <div className="col-md-6 text-end">
               <img className="pt-7 pt-md-0 img-fluid" src="assets/img/hero/hero-img.png" alt="halo" />
@@ -25,6 +30,67 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+        <section className="pt-5" id="banner">
+            <Carousel nextLabel={null}>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100 rounded"
+                        src="https://via.placeholder.com/1600x400" // Ganti URL gambar dengan URL gambar Anda
+                        alt="First slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100 rounded"
+                        src="https://via.placeholder.com/1600x400" // Ganti URL gambar dengan URL gambar Anda
+                        alt="Second slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100 rounded"
+                        src="https://via.placeholder.com/1600x400" // Ganti URL gambar dengan URL gambar Anda
+                        alt="Third slide"
+                    />
+                </Carousel.Item>
+            </Carousel>
+        </section>
+
+        <section className="pt-5" id="marketing">
+            <div className="container">
+                <h1 className="fw-bold fs-6 mb-3">Produk Pilihan</h1>
+                <p className="mb-6 text-secondary">Produk pilihan terangnesia yang mungkin cocok buatmu</p>
+                <div className="row">
+                    <div className="col-md-4 mb-4">
+                        <div className="card"><img className="card-img-top" src="assets/img/marketing/marketing01.png" alt="tes2"/>
+                            <div className="card-body ps-0">
+                                <Badge bg="primary">Makanan</Badge>
+                                <p className="fw-bold text-decoration-none me-1">Merupakan judul produk yang tampil disini seperti ini jika panjang tulisannya</p>
+                                <p className="text-secondary">By <a className="fw-bold text-decoration-none me-1" href="">Abdullah</a>|<span className="ms-1">Surakarta</span></p>
+                                <h5 className="fw-bold">Rp. 550.000</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                        <div className="card"><img className="card-img-top" src="assets/img/marketing/marketing02.png" alt="tes3" />
+                            <div className="card-body ps-0">
+                                <p className="text-secondary">By <a className="fw-bold text-decoration-none me-1" href="">Abdullah</a>|<span className="ms-1">03 March 2019</span></p>
+                                <h3 className="fw-bold">Motivation Is The First Step To Success</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                        <div className="card"><img className="card-img-top" src="assets/img/marketing/marketing03.png" alt="tes4" />
+                            <div className="card-body ps-0">
+                                <p className="text-secondary">By <a className="fw-bold text-decoration-none me-1" href="">Abdullah</a>|<span className="ms-1">03 March 2019</span></p>
+                                <h3 className="fw-bold">Success Steps For Your Personal Or Business Life</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>{/* end of .container*/}
+        </section>
 
       <section className="pt-5 pt-md-9 mb-6" id="feature">
         <div className="bg-holder z-index--1 bottom-0 d-none d-lg-block" style={{ backgroundImage: 'url(assets/img/category/shape.png)', opacity: '.5' }}>
