@@ -6,6 +6,7 @@ import {Carousel} from "react-bootstrap";
 import { fetchProducts } from '../api';
 
 const Landing = () => {
+    const cdnLink = "https://terangnesia.sgp1.cdn.digitaloceanspaces.com/";
     const [products, setProducts] = useState([]);
     const [limit] = useState(10);
     const [offset] = useState(0);
@@ -28,7 +29,7 @@ const Landing = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 text-md-start text-center py-6">
-              <h1 className="mb-4 fs-9 fw-bold">Terangnesia</h1>
+              <h1 className="mb-4 fs-9 fw-bold">Terangnesia {products.status}</h1>
               <p className="mb-6 lead text-secondary">Tempat kamu dapat menemukan produk - produk UMKM<br className="d-none d-xl-block" />dari seluruh indonesia<br className="d-none d-xl-block" /></p>
                <div className="text-center text-md-start">
                    <form className="mb-3">
@@ -81,10 +82,10 @@ const Landing = () => {
                     {products.map((product) => (
                         <div key={product.id_product} className="col-md-4 mb-4">
                             <div className="card">
-                                <img className="card-img-top" src={product.thumbnail} alt={product.name} />
+                                <img className="card-img-top" src={cdnLink + product.thumbnail} alt={product.name} />
                                 <div className="card-body ps-0">
                                     <Badge bg="primary">{product.label}</Badge>
-                                    <p className="fw-bold text-decoration-none me-1">{product.name}</p>
+                                    <h4 className="fw-bold text-decoration-none me-1">{product.name}</h4>
                                     <p className="text-secondary">
                                         By <a className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
                                         <span className="ms-1">{product.location}</span>
