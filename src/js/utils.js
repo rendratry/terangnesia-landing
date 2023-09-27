@@ -83,6 +83,7 @@ const grays = {
 };
 
 const hasClass = (el, className) => {
+  // eslint-disable-next-line no-unused-expressions
   !el && false;
   return el.classList.value.includes(className);
 };
