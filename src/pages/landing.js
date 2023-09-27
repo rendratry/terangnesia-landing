@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Badge from 'react-bootstrap/Badge';
 import {Carousel} from "react-bootstrap";
+import { fetchProducts } from '../api';
 
 const Landing = () => {
+    const [products, setProducts] = useState([]);
+    const [limit] = useState(10);
+    const [offset] = useState(0);
+    useEffect(() => {
+        const fetchDataFromAPI = async () => {
+            try {
+                const responseData = await fetchProducts(limit, offset);
+                setProducts(responseData.data);
+            } catch (error) {
+                console.error('Terjadi kesalahan:', error);
+            }
+        };
+
+        fetchDataFromAPI();
+    }, [limit, offset]);
   return (
     <div>
       <Navbar/>
@@ -62,32 +78,22 @@ const Landing = () => {
                 <h1 className="fw-bold fs-6 mb-3">Produk Pilihan</h1>
                 <p className="mb-6 text-secondary">Produk pilihan terangnesia yang mungkin cocok buatmu</p>
                 <div className="row">
-                    <div className="col-md-4 mb-4">
-                        <div className="card"><img className="card-img-top" src="assets/img/marketing/marketing01.png" alt="tes2"/>
-                            <div className="card-body ps-0">
-                                <Badge bg="primary">Makanan</Badge>
-                                <p className="fw-bold text-decoration-none me-1">Merupakan judul produk yang tampil disini seperti ini jika panjang tulisannya</p>
-                                <p className="text-secondary">By <a className="fw-bold text-decoration-none me-1" href="">Abdullah</a>|<span className="ms-1">Surakarta</span></p>
-                                <h5 className="fw-bold">Rp. 550.000</h5>
+                    {products.map((product) => (
+                        <div key={product.id_product} className="col-md-4 mb-4">
+                            <div className="card">
+                                <img className="card-img-top" src={product.thumbnail} alt={product.name} />
+                                <div className="card-body ps-0">
+                                    <Badge bg="primary">{product.label}</Badge>
+                                    <p className="fw-bold text-decoration-none me-1">{product.name}</p>
+                                    <p className="text-secondary">
+                                        By <a className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
+                                        <span className="ms-1">{product.location}</span>
+                                    </p>
+                                    <h5 className="fw-bold">Rp. {product.price}</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-4 mb-4">
-                        <div className="card"><img className="card-img-top" src="assets/img/marketing/marketing02.png" alt="tes3" />
-                            <div className="card-body ps-0">
-                                <p className="text-secondary">By <a className="fw-bold text-decoration-none me-1" href="">Abdullah</a>|<span className="ms-1">03 March 2019</span></p>
-                                <h3 className="fw-bold">Motivation Is The First Step To Success</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 mb-4">
-                        <div className="card"><img className="card-img-top" src="assets/img/marketing/marketing03.png" alt="tes4" />
-                            <div className="card-body ps-0">
-                                <p className="text-secondary">By <a className="fw-bold text-decoration-none me-1" href="">Abdullah</a>|<span className="ms-1">03 March 2019</span></p>
-                                <h3 className="fw-bold">Success Steps For Your Personal Or Business Life</h3>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>{/* end of .container*/}
         </section>
