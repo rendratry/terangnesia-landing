@@ -6,7 +6,7 @@ import {Card, Carousel} from "react-bootstrap";
 import { fetchProducts } from '../api';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import ShimmerCard from "../components/shimmer";
 
 const Landing = () => {
 
@@ -20,11 +20,14 @@ const Landing = () => {
     const [products, setProducts] = useState([]);
     const [limit] = useState(10);
     const [offset] = useState(0);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchDataFromAPI = async () => {
             try {
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 const responseData = await fetchProducts(limit, offset);
                 setProducts(responseData.data);
+                setLoading(false)
             } catch (error) {
                 console.error('Terjadi kesalahan:', error);
             }
@@ -41,21 +44,27 @@ const Landing = () => {
             <div className="col-md-6 text-md-start text-center py-6">
               <h1 className="mb-4 fs-9 fw-bold">Terangnesia</h1>
               <p className="mb-6 lead text-secondary">Tempat kamu dapat menemukan produk - produk UMKM<br className="d-none d-xl-block" />dari seluruh indonesia<br className="d-none d-xl-block" /></p>
-               <div className="text-center text-md-start">
-                   <form className="mb-3">
-                       <input
-                           className="form-control"
-                           type="text" placeholder="Masukkan Nama Produk"
-                           aria-label="product"
-                           value={productName}
-                           onChange={handleInputChange}
-                       />
-                       <br></br>
-                       <div className="text-center text-md-start">
-                           <Link to={`/search-product?product=${productName}`} className="btn btn-warning me-3 btn-lg" href="" role="button">Cari</Link>
-                       </div>
-                   </form>
-               </div>
+                <div className="row align-items-center">
+                    <div className="col-12 col-md-12">
+                        <form className="mb-4 d-flex">
+                            <input
+                                className="form-control flex-grow-1 me-3"
+                                type="text"
+                                placeholder="Masukkan Nama Produk"
+                                aria-label="product"
+                                value={productName}
+                                onChange={handleInputChange}
+                            />
+                            <Link
+                                to={`/search-product?product=${productName}`}
+                                className="btn btn-warning btn-lg"
+                                role="button"
+                            >
+                                Cari
+                            </Link>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div className="col-md-6 text-end">
               <img className="pt-7 pt-md-0 img-fluid" src="assets/img/hero/hero-img.png" alt="halo" />
@@ -65,11 +74,12 @@ const Landing = () => {
       </section>
 
         <section className="pt-4" id="banner">
+            <div className="container">
             <Carousel nextLabel={null}>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100 rounded"
-                        src="https://via.placeholder.com/1600x400" // Ganti URL gambar dengan URL gambar Anda
+                        className="d-flex w-100 rounded"
+                        src="https://terangnesia.sgp1.cdn.digitaloceanspaces.com/app-assets/banner-1.png" // Ganti URL gambar dengan URL gambar Anda
                         alt="First slide"
                     />
                 </Carousel.Item>
@@ -88,6 +98,7 @@ const Landing = () => {
                     />
                 </Carousel.Item>
             </Carousel>
+            </div>
         </section>
 
         <section className="pt-5 pb-0" id="products">
@@ -95,26 +106,35 @@ const Landing = () => {
                 <h1 className="fw-bold fs-6 mb-3">Produk Pilihan</h1>
                 <p className="mb-6 text-secondary">Produk pilihan terangnesia yang mungkin cocok buatmu</p>
                 <div className="row">
-                    {products.map((product) => (
-                        <div key={product.id_product} className="col-md-4 mb-4">
-                            <div className="card">
-                                <Link to={`/product/${product.id_product}`} className="card-link">
-                                <img className="card-img-top" src={cdnLink + product.thumbnail} alt={product.name} />
-                                <div className="card-body ps-0">
-                                    <Badge bg="warning">{product.label}</Badge>
-                                    <h4 className="fw-bold text-decoration-none me-1" style={{ textDecoration: 'none' }}>{product.name}</h4>
-                                    <p className="text-secondary">
-                                        By <a style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
-                                        <span style={{ textDecoration: 'none' }} className="ms-1">{product.location}</span>
-                                    </p>
-                                    <h5 style={{ textDecoration: 'none' }} className="fw-bold">Rp. {product.price}</h5>
+                    {loading ? ( // Tampilkan efek shimmer saat loading
+                        <>
+                            <ShimmerCard />
+                            <ShimmerCard />
+                            <ShimmerCard />
+                        </>
+                    ) : (
+                        // Tampilkan produk sebenarnya setelah loading selesai
+                        products.map((product) => (
+                            <div key={product.id_product} className="col-md-4 mb-4">
+                                <div className="card">
+                                    <Link to={`/product/${product.id_product}`} className="card-link">
+                                        <img className="card-img-top" src={cdnLink + product.thumbnail} alt={product.name} />
+                                        <div className="card-body ps-0">
+                                            <Badge bg="warning">{product.label}</Badge>
+                                            <h4 className="fw-bold text-decoration-none me-1" style={{ textDecoration: 'none' }}>{product.name}</h4>
+                                            <p className="text-secondary">
+                                                By <a style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
+                                                <span style={{ textDecoration: 'none' }} className="ms-1">{product.location}</span>
+                                            </p>
+                                            <h5 style={{ textDecoration: 'none' }} className="fw-bold">Rp. {product.price}</h5>
+                                        </div>
+                                    </Link>
                                 </div>
-                                </Link>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
-            </div>{/* end of .container*/}
+            </div>
         </section>
 
         <section className="pt-0 pt-md-9 mb-6" id="feature">
@@ -125,20 +145,14 @@ const Landing = () => {
                 <p className="mb-4 text-center text-secondary pt-0">Pilih kategori produk UMKM yang kamu butuhkan</p>
                 <div className="d-flex flex-wrap justify-content-center">
                     <div className="col-md-4 mb-4 mx-2">
-                        <Card style={{ border: '1px solid #999' }}>
-                            <Card.Body className="d-flex align-items-center justify-content-center">
-                                <FontAwesomeIcon icon={faUtensils} size="2x" className="me-3 text-warning" />
-                                <h4>Makanan</h4>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div className="col-md-4 mb-4 mx-2">
+                        <Link to={`/products?label=makanan`} className="card-link">
                         <Card style={{ border: '1px solid #999' }}>
                             <Card.Body className="d-flex align-items-center justify-content-center">
                                 <FontAwesomeIcon icon={["fas", "utensils"]} size="2x" className="me-3 text-warning" />
                                 <h5>Makanan</h5>
                             </Card.Body>
                         </Card>
+                        </Link>
                     </div>
                 </div>
             </div>

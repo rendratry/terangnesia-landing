@@ -4,6 +4,7 @@ import Badge from "react-bootstrap/Badge";
 import React, {useEffect, useState} from "react";
 import Footer from "../components/footer";
 import {searchProduct} from "../api";
+import ShimmerCard from "../components/shimmer";
 
 
 const SearchResult = () => {
@@ -12,6 +13,7 @@ const SearchResult = () => {
     const queryParams = new URLSearchParams(location.search);
     const productParam = queryParams.get('product');
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const [productName, setProductName] = useState(productParam);
 
@@ -22,8 +24,10 @@ const SearchResult = () => {
     useEffect(() => {
         const fetchDataFromAPI = async () => {
             try {
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 const responseData = await searchProduct(productParam);
                 setProducts(responseData.data);
+                setLoading(false)
             } catch (error) {
                 console.error('Terjadi kesalahan:', error);
             }
@@ -65,24 +69,33 @@ const SearchResult = () => {
                 <h1 className="fw-bold fs-6 mb-2">Hasil Pencarian</h1>
                 <p className="mb-6 text-secondary">menampilkan hasil pencarian kamu '{productParam}'</p>
                 <div className="row">
-                    {products.map((product) => (
-                        <div key={product.id_product} className="col-md-4 mb-4">
-                            <div className="card">
-                                <Link to={`/product/${product.id_product}`} className="card-link">
-                                    <img className="card-img-top" src={cdnLink + product.thumbnail} alt={product.name} />
-                                    <div className="card-body ps-0">
-                                        <Badge bg="warning">{product.label}</Badge>
-                                        <h4 className="fw-bold text-decoration-none me-1" style={{ textDecoration: 'none' }}>{product.name}</h4>
-                                        <p className="text-secondary">
-                                            By <a style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
-                                            <span style={{ textDecoration: 'none' }} className="ms-1">{product.location}</span>
-                                        </p>
-                                        <h5 style={{ textDecoration: 'none' }} className="fw-bold">Rp. {product.price}</h5>
-                                    </div>
-                                </Link>
+                    {loading ? ( // Tampilkan efek shimmer saat loading
+                        <>
+                            <ShimmerCard />
+                            <ShimmerCard />
+                            <ShimmerCard />
+                        </>
+                    ) : (
+                        // Tampilkan produk sebenarnya setelah loading selesai
+                        products.map((product) => (
+                            <div key={product.id_product} className="col-md-4 mb-4">
+                                <div className="card">
+                                    <Link to={`/product/${product.id_product}`} className="card-link">
+                                        <img className="card-img-top" src={cdnLink + product.thumbnail} alt={product.name} />
+                                        <div className="card-body ps-0">
+                                            <Badge bg="warning">{product.label}</Badge>
+                                            <h4 className="fw-bold text-decoration-none me-1" style={{ textDecoration: 'none' }}>{product.name}</h4>
+                                            <p className="text-secondary">
+                                                By <a style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
+                                                <span style={{ textDecoration: 'none' }} className="ms-1">{product.location}</span>
+                                            </p>
+                                            <h5 style={{ textDecoration: 'none' }} className="fw-bold">Rp. {product.price}</h5>
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
             </div>{/* end of .container*/}
         </section>
