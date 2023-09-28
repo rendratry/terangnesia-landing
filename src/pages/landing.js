@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Badge from 'react-bootstrap/Badge';
-import {Carousel} from "react-bootstrap";
+import {Card, Carousel} from "react-bootstrap";
 import { fetchProducts } from '../api';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 const Landing = () => {
 
@@ -88,7 +90,7 @@ const Landing = () => {
             </Carousel>
         </section>
 
-        <section className="pt-5" id="marketing">
+        <section className="pt-5 pb-0" id="products">
             <div className="container">
                 <h1 className="fw-bold fs-6 mb-3">Produk Pilihan</h1>
                 <p className="mb-6 text-secondary">Produk pilihan terangnesia yang mungkin cocok buatmu</p>
@@ -115,34 +117,33 @@ const Landing = () => {
             </div>{/* end of .container*/}
         </section>
 
-      <section className="pt-0 pt-md-9 mb-6" id="feature">
-        <div className="bg-holder z-index--1 bottom-0 d-none d-lg-block" style={{ backgroundImage: 'url(assets/img/category/shape.png)', opacity: '.5' }}>
-        </div>
-        <div className="container">
-          <h1 className="fs-9 fw-bold mb-4 text-center">Cari Berdasarkan Label Produk UMKM</h1>
-          <div className="row">
-            <div className="col-lg-3 col-sm-6 mb-2"> <img className="mb-3 ms-n3" src="assets/img/category/icon1.png" width={75} alt="Feature" />
-            <h4 className="mb-3">First click tests</h4>
-            <p className="mb-0 fw-medium text-secondary">While most people enjoy casino gambling,</p>
+        <section className="pt-0 pt-md-9 mb-6" id="feature">
+            <div className="bg-holder z-index--1 bottom-0 d-none d-lg-block">
             </div>
-            <div className="col-lg-3 col-sm-6 mb-2"> <img className="mb-3 ms-n3" src="assets/img/category/icon2.png" width={75} alt="Feature" />
-            <h4 className="mb-3">Design surveys</h4>
-            <p className="mb-0 fw-medium text-secondary">Sports betting,lottery and bingo playing for the fun</p>
+            <div className="container">
+                <h1 className="fs-9 fw-bold mb-4 text-center">Cari Berdasarkan Kategori Produk UMKM</h1>
+                <p className="mb-4 text-center text-secondary pt-0">Pilih kategori produk UMKM yang kamu butuhkan</p>
+                <div className="d-flex flex-wrap justify-content-center">
+                    <div className="col-md-4 mb-4 mx-2">
+                        <Card style={{ border: '1px solid #999' }}>
+                            <Card.Body className="d-flex align-items-center justify-content-center">
+                                <FontAwesomeIcon icon={faUtensils} size="2x" className="me-3 text-warning" />
+                                <h4>Makanan</h4>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                    <div className="col-md-4 mb-4 mx-2">
+                        <Card style={{ border: '1px solid #999' }}>
+                            <Card.Body className="d-flex align-items-center justify-content-center">
+                                <FontAwesomeIcon icon={["fas", "utensils"]} size="2x" className="me-3 text-warning" />
+                                <h5>Makanan</h5>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                </div>
             </div>
-            <div className="col-lg-3 col-sm-6 mb-2"> <img className="mb-3 ms-n3" src="assets/img/category/icon3.png" width={75} alt="Feature" />
-            <h4 className="mb-3">Preference tests</h4>
-            <p className="mb-0 fw-medium text-secondary">The Myspace page defines the individual.</p>
-            </div>
-            <div className="col-lg-3 col-sm-6 mb-2"> <img className="mb-3 ms-n3" src="assets/img/category/icon4.png" width={75} alt="Feature" />
-            <h4 className="mb-3">Five second tests</h4>
-            <p className="mb-0 fw-medium text-secondary">Personal choices and the overall personality of the person.</p>
-            </div>
-          </div>
-          <div className="text-center">
-            <a className="btn btn-warning" href="" role="button">SIGN UP NOW</a>
-          </div>
-        </div>
-      </section>
+        </section>
+
 
       {/*<section className="pt-5" id="validation">*/}
       {/*  <div className="container">*/}
@@ -200,7 +201,7 @@ const Landing = () => {
     {/*    </div>*/}
     {/*    </div>/!* end of .container*!/*/}
     {/*</section>*/}
-    <section className="py-md-11 py-8" id="superhero">
+    <section className="py-md-11 py-8" id="join-us">
         <div className="bg-holder z-index--1 bottom-0 d-none d-lg-block background-position-top" style={{backgroundImage: 'url(assets/img/superhero/oval.png)', opacity: '.5', backgroundPosition: 'top !important'}}>
         </div>
         {/*/.bg-holder*/}

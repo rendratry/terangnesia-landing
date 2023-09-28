@@ -30,10 +30,10 @@ function Footer() {
         <div className="col-lg-3 col-md-6 col-6 mb-4 mb-lg-0 order-2 order-md-2 order-lg-4">
           <p className="fs-2 mb-lg-4">
             knowing you're always on the best energy deal.</p>
-          <form className="mb-3">
-            <input className="form-control" type="email" placeholder="Enter your phone Number" aria-label="phone" />
-          </form>
-          <button className="btn btn-warning fw-medium py-1">Sign up Now</button>
+          {/*<form className="mb-3">*/}
+          {/*  <input className="form-control" type="email" placeholder="Enter your phone Number" aria-label="phone" />*/}
+          {/*</form>*/}
+          {/*<button className="btn btn-warning fw-medium py-1">Sign up Now</button>*/}
         </div>
       </div>
     </div>{/* end of .container*/}
@@ -47,28 +47,16 @@ function Footer() {
       <div className="container border-top py-3">
         <div className="row justify-content-between">
           <div className="col-12 col-md-auto mb-1 mb-md-0">
-            <p className="mb-0">© 2022 Your Company Inc </p>
+            <p className="mb-0">© 2023 Terangnesia </p>
           </div>
-          <div className="col-12 col-md-auto">
-            <p className="mb-0">
-              Made with<span className="fas fa-heart mx-1 text-danger"> </span>by <a className="text-decoration-none ms-1" href="\" target="_blank">Terangnesia</a></p>
-          </div>
+          {/*<div className="col-12 col-md-auto">*/}
+          {/*  <p className="mb-0">*/}
+          {/*    Made with<span className="fas fa-heart mx-1 text-danger"> </span>by <a className="text-decoration-none ms-1" href="\" target="_blank">Terangnesia</a></p>*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>{/* end of .container*/}
   </section>
-  {/* <section> close ============================*/}
-  {/* ============================================*/}
-  {/* ===============================================*/}
-  {/*    End of Main Content*/}
-  {/* ===============================================*/}
-  <div className="modal fade" id="popupVideo" tabIndex={-1} aria-labelledby="popupVideo" aria-hidden="true">
-    <div className="modal-dialog modal-dialog-centered modal-lg">
-      <div className="modal-content">
-        <iframe className="rounded" style={{width: '100%', height: 500}} src="https://www.youtube.com/embed/_lhdhL4UDIo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-      </div>
-    </div>
-  </div>
 </div>
 
   );

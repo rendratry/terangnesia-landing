@@ -26,32 +26,27 @@ const Navbar = () => {
         <div className="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#feature">
-                Product
+              <a className="nav-link" aria-current="page" href="/">
+                Beranda
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#validation">
-                Customers
+              <a className="nav-link" aria-current="page" href="#products">
+                Produk
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#superhero">
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#marketing">
-                Resources
+              <a className="nav-link" aria-current="page" href="/">
+                Tentang Kami
               </a>
             </li>
           </ul>
           <div className="d-flex ms-lg-4">
-            <a className="btn btn-secondary-outline" href="#!">
-              Sign In
-            </a>
-            <a className="btn btn-warning ms-3" href="#!">
-              Sign Up
+            {/*<a className="btn btn-secondary-outline" href="#!">*/}
+            {/*  Sign In*/}
+            {/*</a>*/}
+            <a className="btn btn-warning ms-3" href="#join-us">
+              Join Us
             </a>
           </div>
         </div>
