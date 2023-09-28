@@ -9,8 +9,8 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light sticky-top" data-navbar-on-scroll="data-navbar-on-scroll">
       <div className="container">
-        <a className="navbar-brand" href="index.html">
-          <img src="assets/img/logo.svg" height="31" alt="logo" />
+        <a className="navbar-brand" href="/">
+          <img src="https://terangnesia.sgp1.cdn.digitaloceanspaces.com/app-assets/terangnesia-logo-primary.png" height="60" alt="logo" />
         </a>
         <button
           className="navbar-toggler"

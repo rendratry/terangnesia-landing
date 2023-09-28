@@ -8,7 +8,7 @@ function Footer() {
   <section className="pb-2 pb-lg-5">
     <div className="container">
       <div className="row border-top border-top-secondary pt-7">
-        <div className="col-lg-3 col-md-6 mb-4 mb-md-6 mb-lg-0 mb-sm-2 order-1 order-md-1 order-lg-1"><img className="mb-4" src="assets/img/logo.svg" width={184} alt="halow"/></div>
+        <div className="col-lg-3 col-md-6 mb-4 mb-md-6 mb-lg-0 mb-sm-2 order-1 order-md-1 order-lg-1"><img className="mb-4" src="https://terangnesia.sgp1.cdn.digitaloceanspaces.com/app-assets/terangnesia-logo-primary.png" width={90} alt="halow"/></div>
         <div className="col-lg-3 col-md-6 mb-4 mb-lg-0 order-3 order-md-3 order-lg-2">
           <p className="fs-2 mb-lg-4">Quick Links</p>
           <ul className="list-unstyled mb-0">
@@ -51,7 +51,7 @@ function Footer() {
           </div>
           <div className="col-12 col-md-auto">
             <p className="mb-0">
-              Made with<span className="fas fa-heart mx-1 text-danger"> </span>by <a className="text-decoration-none ms-1" href="https://themewagon.com/" target="_blank">ThemeWagon</a></p>
+              Made with<span className="fas fa-heart mx-1 text-danger"> </span>by <a className="text-decoration-none ms-1" href="\" target="_blank">Terangnesia</a></p>
           </div>
         </div>
       </div>
