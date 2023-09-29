@@ -53,3 +53,21 @@ export async function getProductsByLabel(label) {
         throw error; // Melempar kembali error untuk penanganan lebih lanjut
     }
 }
+
+export async function getProductsById(id) {
+    try {
+        const url = base_url + `find-product/${id}`;
+        const headers = new Headers();
+        headers.set('X-Api-Key', x_api_key);
+
+        const response = await fetch(url, {method: 'GET', headers});
+        if (!response.ok) {
+            throw new Error('Gagal mengambil data dari API');
+        }
+        const responseData = await response.json();
+        return responseData;
+    } catch (error) {
+        console.error('Terjadi kesalahan:', error);
+        throw error; // Melempar kembali error untuk penanganan lebih lanjut
+    }
+}
