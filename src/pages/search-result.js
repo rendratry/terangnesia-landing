@@ -5,8 +5,6 @@ import React, { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import { searchProduct } from "../api";
 import ShimmerCard from "../components/shimmer";
-import Lottie from "react-lottie"; // Import library react-lottie
-import notFoundAnimationData from "../notfound.json"; // Ganti dengan path yang sesuai
 
 const SearchResult = () => {
     const cdnLink = "https://terangnesia.sgp1.cdn.digitaloceanspaces.com/";
@@ -41,14 +39,6 @@ const SearchResult = () => {
         fetchDataFromAPI();
     }, [productParam]);
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: notFoundAnimationData, // Animasi LottieFiles
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-        },
-    };
 
     return (
         <div>
@@ -113,8 +103,14 @@ const SearchResult = () => {
                                 </div>
                             ))
                         ) : (
-                            <div className="d-flex justify-content-center align-items-center">
-                                <Lottie options={defaultOptions} height={300} width={300} />
+                            <div className="container">
+                                <h5>Produk Tidak ditemukan</h5>
+                                <img
+                                    src="%PUBLIC_URL%/assets/img/empty-box.png"
+                                    alt="Not Found"
+                                    width="300"
+                                    height="300"
+                                />
                             </div>
                         )}
                     </div>
