@@ -103,10 +103,10 @@ const SearchResult = () => {
                                 </div>
                             ))
                         ) : (
-                            <div className="container">
+                            <div className="container" style={{justifyContent:"center", display:"flex", alignItems:"center", flexDirection:"column"}}>
                                 <h5>Produk Tidak ditemukan</h5>
                                 <img
-                                    src="%PUBLIC_URL%/assets/img/empty-box.png"
+                                    src={process.env.PUBLIC_URL + '/assets/img/empty-box.png'}
                                     alt="Not Found"
                                     width="300"
                                     height="300"
