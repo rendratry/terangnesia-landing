@@ -80,7 +80,7 @@ const SearchResult = () => {
                         products.map((product) => (
                             <div key={product.id_product} className="col-md-4 mb-4">
                                 <div className="card">
-                                    <Link to={`/product/${product.id_product}`} className="card-link">
+                                    <Link to={`/product-detail?product=${product.id_product}`} className="card-link">
                                         <img className="card-img-top" src={cdnLink + product.thumbnail} alt={product.name} />
                                         <div className="card-body ps-0">
                                             <Badge bg="warning">{product.label}</Badge>

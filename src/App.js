@@ -14,7 +14,7 @@ function App() {
           <Route path='/' element={<Landing/>}></Route>
             <Route path='/search-product' element={<SearchResult/>}></Route>
             <Route path='/products' element={<Products/>}></Route>
-            <Route path='/product-detail/:id_product' element={<ProductDetail/>}></Route>
+            <Route path='/product-detail' element={<ProductDetail/>}></Route>
         </Routes>
     </Router>
   );
