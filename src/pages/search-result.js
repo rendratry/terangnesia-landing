@@ -21,6 +21,10 @@ const SearchResult = () => {
         setProductName(e.target.value);
     };
 
+    const setIsLoading = () => {
+        setLoading(true);
+    };
+
     useEffect(() => {
         const fetchDataFromAPI = async () => {
             try {
@@ -61,6 +65,7 @@ const SearchResult = () => {
                                     to={`/search-product?product=${productName}`}
                                     className="btn btn-warning btn-lg"
                                     role="button"
+                                    onClick={setIsLoading}
                                 >
                                     Cari
                                 </Link>
