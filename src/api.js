@@ -1,4 +1,4 @@
-const base_url = "https://terangnesia-api-y2vek.ondigitalocean.app/terangnesia/api/v1/";
+const base_url = "https://api.terangnesia.com/terangnesia/api/v1/";
 const x_api_key = "12345678";
 export async function fetchProducts(limit, offset) {
     try {

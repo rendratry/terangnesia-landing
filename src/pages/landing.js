@@ -85,16 +85,9 @@ const Landing = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100 rounded"
-                        src="https://via.placeholder.com/1600x400" // Ganti URL gambar dengan URL gambar Anda
-                        alt="Second slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 rounded"
-                        src="https://via.placeholder.com/1600x400" // Ganti URL gambar dengan URL gambar Anda
-                        alt="Third slide"
+                        className="d-flex w-100 rounded"
+                        src="https://terangnesia.sgp1.cdn.digitaloceanspaces.com/app-assets/banner-1.png" // Ganti URL gambar dengan URL gambar Anda
+                        alt="First slide"
                     />
                 </Carousel.Item>
             </Carousel>
@@ -123,7 +116,7 @@ const Landing = () => {
                                             <Badge bg="warning">{product.label}</Badge>
                                             <h4 className="fw-bold text-decoration-none me-1" style={{ textDecoration: 'none' }}>{product.name}</h4>
                                             <p className="text-secondary">
-                                                By <a style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
+                                                <span style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1">{product.owner}</span>|
                                                 <span style={{ textDecoration: 'none' }} className="ms-1">{product.location}</span>
                                             </p>
                                             <h5 style={{ textDecoration: 'none' }} className="fw-bold">Rp. {product.price.toLocaleString()}</h5>
@@ -224,7 +217,9 @@ const Landing = () => {
             <div className="col-lg-6 text-center">
             <h1 className="fw-bold mb-4 fs-7">Ingin Produkmu Tampil di Terangnesia?</h1>
             <p className="mb-5 text-info fw-medium">Hubungi kita agar produkmu bisa tampil dan<br />menggapai market seluruh indonesia</p>
-            <button className="btn btn-warning btn-md">Hubungi Kami</button>
+                <a href="https://wa.me/6285772932331" target="_blank">
+                    <button className="btn btn-warning btn-md">Hubungi Kami</button>
+                </a>
             </div>
         </div>
         </div>{/* end of .container*/}

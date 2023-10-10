@@ -98,7 +98,7 @@ const SearchResult = () => {
                                                 <Badge bg="warning">{product.label}</Badge>
                                                 <h4 className="fw-bold text-decoration-none me-1" style={{ textDecoration: 'none' }}>{product.name}</h4>
                                                 <p className="text-secondary">
-                                                    By <a style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</a>|
+                                                    <span style={{ textDecoration: 'none' }} className="fw-bold text-decoration-none me-1" href="">{product.owner}</span>|
                                                     <span style={{ textDecoration: 'none' }} className="ms-1">{product.location}</span>
                                                 </p>
                                                 <h5 style={{ textDecoration: 'none' }} className="fw-bold">Rp. {product.price.toLocaleString()}</h5>

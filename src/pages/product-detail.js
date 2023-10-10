@@ -156,7 +156,7 @@ const ProductDetail = () => {
                                         <ListGroup variant="flush">
                                             {contacts.map((contact) => (
                                                 <ListGroup.Item key={contact.id_contact} style={{ borderBottom: "none" }}>
-                                                    <a href={contact.action} target="_blank" rel="noopener noreferrer">
+                                                    <a href={contact.action} target="_blank">
                                                         <Button variant="success" className="rounded-pill">
                                                             {contact.label}
                                                         </Button>

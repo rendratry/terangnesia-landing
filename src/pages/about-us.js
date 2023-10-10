@@ -36,7 +36,9 @@ const AboutUs = () => {
                   <div className="row justify-content-center">
                       <div className="col-lg-6 text-center">
                           <h1 className="fw-bold mb-4 fs-7">Kontak Kami</h1>
-                          <button className="btn btn-warning btn-md">Admin</button>
+                          <a href="https://wa.me/6285772932331" target="_blank">
+                              <button className="btn btn-warning btn-md">Admin</button>
+                          </a>
                       </div>
                   </div>
               </div>{/* end of .container*/}
